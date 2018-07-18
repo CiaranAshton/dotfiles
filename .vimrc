@@ -1,6 +1,8 @@
-" Package management
 packadd minpac
 call minpac#init()
+call minpac#add('junegunn/fzf')
+call minpac#add('Valloric/YouCompleteMe')
+call minpac#add('trevordmiller/nova-vim')
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
 call minpac#add('tpope/vim-unimpaired')
@@ -11,10 +13,10 @@ call minpac#add('prettier/vim-prettier')
 call minpac#add('othree/html5.vim')
 call minpac#add('hail2u/vim-css3-syntax')
 call minpac#add('mxw/vim-jsx')
-call minpac#add('Valloric/YouCompleteMe')
 call minpac#add('scrooloose/nerdtree')
 call minpac#add('kien/ctrlp.vim')
 call minpac#add('christoomey/vim-tmux-navigator')
+call minpac#add('sheerun/vim-polyglot')
 
 " Custom commands
 command! PackUpdate call minpac#update()
@@ -70,7 +72,6 @@ if has('nvim')
   tnoremap <Esc> <C-\><C-n>
   tnoremap <C-v><Esc> <Esc>
 endif
-
 
 " Colour scheme
 colorscheme nova
