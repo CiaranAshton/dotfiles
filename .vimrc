@@ -1,5 +1,7 @@
 packadd minpac
 call minpac#init()
+call minpac#add('Quramy/tsuquyomi')
+call minpac#add('leafgarland/typescript-vim')
 call minpac#add('fatih/vim-go')
 call minpac#add('junegunn/fzf')
 call minpac#add('Valloric/YouCompleteMe')
@@ -21,6 +23,10 @@ call minpac#add('sheerun/vim-polyglot')
 " Custom commands
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
+
+" Colour scheme
+colorscheme nova
+syntax on
 
 " Leader mapping
 :let mapleader = ','
@@ -70,6 +76,8 @@ let g:javascript_plugin_flow = 1
 " Show line numbers
 set number
 
+set ruler
+
 set cursorline
 set noswapfile
 
@@ -85,9 +93,13 @@ nnoremap <leader><leader> <C-^>
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 " Prettier settings
-let g:prettier#config#print_width = 120
+let g:prettier#config#print_width = 90
 let g:prettier#config#tab_width = 4
 let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#semi = 'true'
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'true'
+let g:prettier#config#trailing_comma = 'all'
 
 " Keybinding for terminal mode
 if has('nvim')
@@ -95,6 +107,26 @@ if has('nvim')
   tnoremap <C-v><Esc> <Esc>
 endif
 
-" Colour scheme
-colorscheme nova
-syntax on
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch 
+
+set laststatus=2
+set statusline=\ \ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    endif
+    return ''
+endfunction
