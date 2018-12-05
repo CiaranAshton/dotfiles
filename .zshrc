@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/cashton/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="lambda-gitster"
 plugins=(
   git
 )
@@ -38,3 +38,10 @@ export NVM_DIR="$HOME/.nvm"
 # Golang settings
 export GOPATH="$HOME/code/go"
 export PATH="$HOME/code/go/bin:$PATH"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/cashton/.nvm/versions/node/v10.7.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/cashton/.nvm/versions/node/v10.7.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/cashton/.nvm/versions/node/v10.7.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/cashton/.nvm/versions/node/v10.7.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh

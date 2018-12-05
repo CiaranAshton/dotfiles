@@ -1,5 +1,6 @@
 packadd minpac
 call minpac#init()
+call minpac#add('neovimhaskell/haskell-vim')
 call minpac#add('Quramy/tsuquyomi')
 call minpac#add('leafgarland/typescript-vim')
 call minpac#add('fatih/vim-go')
@@ -15,6 +16,7 @@ call minpac#add('trevordmiller/nova-vim')
 call minpac#add('othree/html5.vim')
 call minpac#add('hail2u/vim-css3-syntax')
 call minpac#add('mxw/vim-jsx')
+call minpac#add('ianks/vim-tsx')
 call minpac#add('scrooloose/nerdtree')
 call minpac#add('kien/ctrlp.vim')
 call minpac#add('christoomey/vim-tmux-navigator')
@@ -27,6 +29,7 @@ command! PackClean call minpac#clean()
 " Colour scheme
 colorscheme nova
 syntax on
+filetype plugin indent on
 
 " Leader mapping
 :let mapleader = ','
@@ -56,6 +59,8 @@ let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_build_constraints = 1
+
+let g:go_version_warning = 0
 
 " clear search highlight
 nnoremap § :nohls<cr>
@@ -93,13 +98,22 @@ nnoremap <leader><leader> <C-^>
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 " Prettier settings
-let g:prettier#config#print_width = 90
+let g:prettier#config#print_width = 70
 let g:prettier#config#tab_width = 4
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#semi = 'true'
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'true'
 let g:prettier#config#trailing_comma = 'all'
+
+" Haskell
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
 " Keybinding for terminal mode
 if has('nvim')
