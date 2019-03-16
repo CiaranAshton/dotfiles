@@ -1,5 +1,11 @@
 packadd minpac
 call minpac#init()
+call minpac#add('w0rp/ale')
+call minpac#add('nathanaelkane/vim-indent-guides')
+call minpac#add('mengelbrecht/lightline-bufferline')
+call minpac#add('itchyny/lightline.vim')
+call minpac#add('airblade/vim-gitgutter')
+call minpac#add('python-mode/python-mode')
 call minpac#add('neovimhaskell/haskell-vim')
 call minpac#add('Quramy/tsuquyomi')
 call minpac#add('leafgarland/typescript-vim')
@@ -31,6 +37,15 @@ colorscheme nova
 syntax on
 filetype plugin indent on
 
+" let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+" let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+" let g:lightline.component_type   = {'buffers': 'tabsel'}
+
+set encoding=UTF-8
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
 " Leader mapping
 :let mapleader = ','
 noremap <Leader>v <C-w>v
@@ -39,6 +54,8 @@ noremap <Leader>z <C-w>z
 noremap <Leader>c :ccl<CR>
 noremap £ :norm i#<CR>
 noremap <Leader>f :FZF<CR>
+noremap <Leader>x :ALEGoToDefinition<CR>
+noremap <Leader>t :IndentGuidesToggle<CR>
 
 " Golang settings
 let g:go_fmt_command = "goimports"
@@ -72,6 +89,7 @@ nnoremap <leader>y :CtrlPBuffer<cr>
 nnoremap <leader>[ :NERDTree<cr>
 nnoremap <leader>] :NERDTreeClose<cr>
 nnoremap <leader>' :NERDTreeFind<cr>
+let g:NERDTreeWinSize=25
 
 " JS config vars
 let g:javascript_plugin_jsdoc = 1
@@ -95,11 +113,11 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader><leader> <C-^>
 
 " Set tab width
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 " Prettier settings
 let g:prettier#config#print_width = 70
-let g:prettier#config#tab_width = 4
+let g:prettier#config#tab_width = 2
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#semi = 'true'
 let g:prettier#config#single_quote = 'true'
