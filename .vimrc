@@ -1,9 +1,15 @@
 packadd minpac
 call minpac#init()
+call minpac#add('mileszs/ack.vim')
+call minpac#add('nightsense/cosmic_latte')
+call minpac#add('mhartington/oceanic-next')
+call minpac#add('Nequo/vim-allomancer')
 call minpac#add('w0rp/ale')
+call minpac#add('Valloric/YouCompleteMe')
 call minpac#add('nathanaelkane/vim-indent-guides')
 call minpac#add('mengelbrecht/lightline-bufferline')
-call minpac#add('itchyny/lightline.vim')
+call minpac#add('vim-airline/vim-airline')
+call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('airblade/vim-gitgutter')
 call minpac#add('python-mode/python-mode')
 call minpac#add('neovimhaskell/haskell-vim')
@@ -11,7 +17,6 @@ call minpac#add('Quramy/tsuquyomi')
 call minpac#add('leafgarland/typescript-vim')
 call minpac#add('fatih/vim-go')
 call minpac#add('junegunn/fzf')
-call minpac#add('Valloric/YouCompleteMe')
 call minpac#add('prettier/vim-prettier')
 call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
 call minpac#add('tpope/vim-unimpaired')
@@ -32,14 +37,30 @@ call minpac#add('sheerun/vim-polyglot')
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " Colour scheme
-colorscheme nova
 syntax on
+" syntax enable
 filetype plugin indent on
+" colorscheme nova
+" colorscheme OceanicNext
+" colorscheme solarized
+set termguicolors "Remove this in urxvt
+" colo allomancer 
+set background=dark
+colorscheme cosmic_latte
+
+let g:airline_theme='cosmic_latte_dark'
+let g:airline#extensions#tabline#enabled = 1
+" :let g:airline_statusline_ontop=1
 
 " let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 " let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 " let g:lightline.component_type   = {'buffers': 'tabsel'}
+let g:lightline = { 'colorscheme': 'cosmic_latte_dark' }
 
 set encoding=UTF-8
 let g:lightline = {
@@ -113,11 +134,12 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader><leader> <C-^>
 
 " Set tab width
-set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+  
 
 " Prettier settings
 let g:prettier#config#print_width = 70
-let g:prettier#config#tab_width = 2
+let g:prettier#config#tab_width = 4
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#semi = 'true'
 let g:prettier#config#single_quote = 'true'
