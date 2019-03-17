@@ -1,5 +1,9 @@
 packadd minpac
 call minpac#init()
+call minpac#add('kaicataldo/material.vim')
+call minpac#add('nightsense/snow')
+call minpac#add('sts10/vim-pink-moon')
+call minpac#add('yous/vim-open-color')
 call minpac#add('mileszs/ack.vim')
 call minpac#add('nightsense/cosmic_latte')
 call minpac#add('mhartington/oceanic-next')
@@ -45,27 +49,29 @@ endif
 syntax on
 " syntax enable
 filetype plugin indent on
+set termguicolors "Remove this in urxvt
+set background=dark
 " colorscheme nova
 " colorscheme OceanicNext
 " colorscheme solarized
-set termguicolors "Remove this in urxvt
-" colo allomancer 
-set background=dark
-colorscheme cosmic_latte
+" colorscheme cosmic_latte
+" colorscheme open-color
+" colorscheme snow
+colorscheme material
 
-let g:airline_theme='cosmic_latte_dark'
-let g:airline#extensions#tabline#enabled = 1
-" :let g:airline_statusline_ontop=1
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+let g:material_theme_style = 'default'
+" let g:material_theme_style = 'palenight'
+" let g:material_theme_style = 'dark'
+let g:material_terminal_italics = 1
 
-" let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-" let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-" let g:lightline.component_type   = {'buffers': 'tabsel'}
-let g:lightline = { 'colorscheme': 'cosmic_latte_dark' }
+let g:airline_theme = 'material'
 
 set encoding=UTF-8
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
+let g:lightline = { 'colorscheme': 'material_vim' }
 
 " Leader mapping
 :let mapleader = ','
@@ -77,6 +83,7 @@ noremap £ :norm i#<CR>
 noremap <Leader>f :FZF<CR>
 noremap <Leader>x :ALEGoToDefinition<CR>
 noremap <Leader>t :IndentGuidesToggle<CR>
+noremap <Leader>e :lopen<CR>
 
 " Golang settings
 let g:go_fmt_command = "goimports"
